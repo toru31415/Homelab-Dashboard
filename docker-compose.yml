@@ -9,20 +9,20 @@ services:
       - "27017:27017"
 
   backend:
-    build: ./backend
+    build: ./Backend
     container_name: homelab-backend
     restart: unless-stopped
     depends_on:
       - mongo
     env_file:
-      - ./backend/.env
+      - ./Backend/.env
     environment:
       - MONGO_URI=mongodb://mongo:27017/homelab
     ports:
       - "5000:5000"
 
   frontend:
-    build: ./frontend
+    build: ./Frontend
     container_name: homelab-frontend
     restart: unless-stopped
     depends_on:
