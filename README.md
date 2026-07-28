@@ -43,10 +43,12 @@ nginx.conf / Dockerfile:    ← Für den Produktivbetrieb: baut die React-App un
 ```
 
 ## Commit-Message-Konvention
-feat: – neue Funktion
-fix: – Bugfix
-chore: – Konfiguration/Aufräumarbeiten
-docs: – Dokumentation
+| Typ | Beschreibung
+| - | -
+| feat: | neue Funktion
+| fix: | Bugfix
+| chore: | Konfiguration/Aufräumarbeiten
+| docs: | Dokumentation
 
 ## Datenmodel
 
