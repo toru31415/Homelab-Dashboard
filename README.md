@@ -54,62 +54,7 @@ nginx.conf / Dockerfile:    ← Für den Produktivbetrieb: baut die React-App un
 
 
 ## API
-### Get User by ID (Beispiel)
-
-Retrieves a single user's profile information.
-
-**Endpoint**
-GET /api/v1/users/{id}
-**Auth required:** Yes (Bearer token)
-
-#### Path Parameters
-
-| Name | Type   | Required | Description        |
-|------|--------|----------|---------------------|
-| id   | string | Yes      | Unique user ID      |
-
-#### Query Parameters
-
-| Name    | Type    | Required | Default | Description               |
-|---------|---------|----------|---------|---------------------------|
-| include | string  | No       | none    | Comma-separated relations to include (e.g. `orders,addresses`) |
-
-#### Headers
-
-| Name          | Value              | Required |
-|---------------|--------------------|----------|
-| Authorization | Bearer `<token>`   | Yes      |
-| Content-Type  | application/json   | Yes      |
-
-#### Request Example
-
-```bash
-curl -X GET "https://api.example.com/v1/users/123?include=orders" \
-  -H "Authorization: Bearer eyJhbGciOi..." \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-**200 OK**
-
-```json
-{
-  "id": "123",
-  "name": "Jane Doe",
-  "email": "jane@example.com",
-  "orders": []
-}
-```
-
-**Error Responses**
-
-| Status | Meaning       | Example body                          |
-|--------|---------------|----------------------------------------|
-| 401    | Unauthorized  | `{"error": "Invalid or missing token"}`|
-| 404    | Not Found     | `{"error": "User not found"}`          |
-
-
+[API.md](API.md)
 - - -
 
 ## Verbindung aufbauen
