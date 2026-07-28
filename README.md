@@ -42,6 +42,12 @@ vite.config.js:             ← Entwicklungsserver-Einstellungen, leitet /api-Au
 nginx.conf / Dockerfile:    ← Für den Produktivbetrieb: baut die React-App und liefert sie über nginx aus, nginx reicht /api ans Backend weiter.
 ```
 
+## Commit-Message-Konvention
+feat: – neue Funktion
+fix: – Bugfix
+chore: – Konfiguration/Aufräumarbeiten
+docs: – Dokumentation
+
 ## Datenmodel
 
 
