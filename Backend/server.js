@@ -5,7 +5,7 @@ const connectDB = require('./Config/Datenbank');
 const requireAuth = require('./Middleware/Authentication');
 
 const authRoutes = require('./Routes/Authentication_Routes');
-//const nodeRoutes = require('./Routes/Node_Routes');
+const nodeRoutes = require('./Routes/Node_Routes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -17,7 +17,7 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 
 //JWT-Token erforderlich
-//app.use('/api/nodes', requireAuth, nodeRoutes);
+app.use('/api/nodes', requireAuth, nodeRoutes);
 app.get('/api/health', (req, res) => res.json({ok: true}));
 
 connectDB().then(() => {
