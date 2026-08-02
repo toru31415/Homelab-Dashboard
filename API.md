@@ -50,7 +50,7 @@ Anmeldung für JSON Web Token. Das Resultat wird dann bei jeder nachfolgenden An
 **Beispiel**
 ```json
 {
-    "username": "admin"
+    "username": "admin",
     "password": "password"
 }
 ```
@@ -203,7 +203,7 @@ Erstellt einen Endpunkt
 | Code | Message      | Beschreibung                                    | Rückmeldung
 | ---- | ------------ | ----------------------------------------------- | -
 | 201  | Created      | Node Objekt wurde erstellt | 
-| 404  | Not Found    | Node Objekt wurde NICHT erstellt | ``{ "error": "<mongoose validation message>" }``
+| 400  | Not Found    | Node Objekt wurde NICHT erstellt | ``{ "error": "<mongoose validation message>" }``
 
 - - -
 
@@ -291,6 +291,7 @@ Anpingen von einem bestehenden Endpunkt
 | ---- | ------------ | ----------------------------------------------- | -
 | 200  | OK           | Ping vom Node Objekt hat funktioniert | ``{ "online": true, "latency": 12.4, "status": "online", "lastCheck": "2026-07-28T10:15:00.000Z" }``
 | 404  | Not Found    | Kein Node Object gefunden | ``{ "error": "Node nicht gefunden." }``
+| 400  | Bad Request  | Keine IP beim Node konfiguriert | { "error": "Keine IP konfiguriert." }
 
 **Ping vom Node Objekt hat funktioniert **
 ```JSON
