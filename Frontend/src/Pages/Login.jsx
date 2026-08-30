@@ -29,7 +29,7 @@ export default function Login() {
     <section className="login-screen" aria-label="Homelab Login">
       <div className="login-card">
         <div className="login-brand">
-          <div className="login-logo">🖥</div>
+          <div className="login-logo"></div>
           <div>
             <div className="login-title">Homelab Login</div>
             <div className="login-subtitle">Bitte anmelden, um das Dashboard zu öffnen.</div>
@@ -75,7 +75,8 @@ export default function Login() {
               {error}
             </div>
           )}
-          <button className="btn btn-primary login-submit" type="submit" disabled={loading}> {loading ? 'Anmelden…' : 'Anmelden'}
+          <button className="btn btn-primary login-submit" type="submit" disabled={loading}>
+            🔐 {loading ? 'Anmelden…' : 'Anmelden'}
           </button>
         </form>
       </div>
