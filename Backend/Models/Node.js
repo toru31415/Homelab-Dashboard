@@ -33,6 +33,10 @@ const nodeSchema = new mongoose.Schema(
         // Verschachtelte Zuordnung im Hardware-Dashboard
         parentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Node', default: null },
         showOnDashboard: {type: Boolean, default: false},
+        
+        // Ping-Status
+        latency: {type: Number, default: null},
+        lastCheck: {type: Date, default: null},
 
         // Ansicht, dass Admin den Node angelegt hat.
         createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
