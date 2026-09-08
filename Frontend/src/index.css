@@ -1,0 +1,740 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #101820;
+  color: #eee;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+
+/* ── Header ────────────────────────────────────────────── */
+header {
+  background: #172331;
+  border-bottom: 1px solid #405064;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.logo,
+.header-stats,
+.header-btns,
+.toolbar,
+.tabs,
+.node-header,
+.status-row,
+.card-actions,
+.child-row,
+.check-row,
+.svc-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+}
+.logo-icon,
+.node-icon,
+.child-icon,
+.login-logo,
+.device-info-icon {
+  background: #26384a;
+  padding: 8px;
+  border-radius: 5px;
+}
+.node-icon-svg,
+.net-svg-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+.net-svg-icon rect,
+.net-svg-icon circle,
+.net-svg-icon path,
+.net-svg-icon line,
+.net-svg-icon ellipse {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.net-svg-icon .fill {
+  fill: currentColor;
+  stroke: none;
+}
+.switch-icon {
+  width: 28px;
+  height: 22px;
+}
+.header-stats {
+  margin-left: auto;
+}
+.status-summary {
+  font-size: 12px;
+  color: #bbb;
+}
+.dot,
+.svc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38c172;
+  display: inline-block;
+  margin-right: 5px;
+}
+.warn .dot,
+.svc-dot.warn {
+  background: #e6b800;
+}
+.err .dot,
+.svc-dot.down {
+  background: #e74c3c;
+}
+.dhcp .dot {
+  background: #3498db;
+}
+
+/* ── Layout ────────────────────────────────────────────── */
+main {
+  padding: 20px;
+}
+
+.tabs {
+  border-bottom: 1px solid #405064;
+  margin-bottom: 15px;
+}
+.tab {
+  background: none;
+  color: #bbb;
+  border: 0;
+  padding: 10px 14px;
+}
+.tab.active {
+  color: white;
+  border-bottom: 2px solid #3498db;
+}
+
+/* ── Toolbar ───────────────────────────────────────────── */
+.toolbar {
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+.search-box {
+  position: relative;
+  flex: 1;
+  max-width: 320px;
+}
+.search-box input {
+  width: 100%;
+  background: #101820;
+  color: white;
+  border: 1px solid #52667c;
+  border-radius: 4px;
+  padding: 8px 10px 8px 28px;
+}
+.search-icon {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  opacity: 0.6;
+}
+.search-icon .net-svg-icon {
+  width: 14px;
+  height: 14px;
+}
+.spacer {
+  flex: 1;
+}
+
+/* ── Buttons ───────────────────────────────────────────── */
+.btn,
+.action-btn,
+.btn-add-svc,
+.rm-svc {
+  border: 1px solid #52667c;
+  background: #25384b;
+  color: white;
+  padding: 7px 11px;
+  border-radius: 4px;
+}
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+}
+.btn-icon .net-svg-icon {
+  width: 16px;
+  height: 16px;
+}
+.header-btns .btn,
+.modal-footer .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  white-space: nowrap;
+}
+.header-btns .btn {
+  min-width: 130px;
+}
+.modal-footer .btn {
+  min-width: 110px;
+}
+.btn-primary {
+  background: #2477b3;
+}
+.btn-cancel,
+.btn-ghost {
+  background: #1b2937;
+}
+.action-btn.del,
+.rm-svc {
+  background: #7d2b2b;
+}
+.action-btn.ping-b:hover {
+  color: #38c172;
+}
+.action-btn.info:hover {
+  color: #3498db;
+}
+
+/* ── Grid & Node Card ──────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+.node-card,
+.node-card-main {
+  background: #172331;
+  border: 1px solid #405064;
+  border-radius: 6px;
+  padding: 15px;
+}
+.node-card-main {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.node-card.status-offline {
+  border-color: #a94442;
+}
+.node-card.status-warn {
+  border-color: #b58b20;
+}
+.node-card.status-dhcp {
+  border-color: #2477b3;
+}
+
+.node-title-group {
+  flex: 1;
+}
+.node-name {
+  font-size: 17px;
+  font-weight: bold;
+}
+.node-ip,
+.node-desc,
+.child-meta,
+.ping-meta,
+.form-help,
+.login-subtitle,
+.attach-help,
+.ip-mode-help,
+.password-note {
+  color: #aaa;
+  font-size: 12px;
+}
+/* Links in der IP-Zeile sollen wie normaler grauer Text aussehen statt
+   in der Standard-Linkfarbe des Browsers — sonst gewinnt a:link gegen .node-ip. */
+.node-ip a,
+.child-endpoint a {
+  color: inherit;
+  text-decoration: none;
+}
+.node-ip a:hover,
+.child-endpoint a:hover {
+  text-decoration: underline;
+}
+
+/* Typ- und Status-Badges */
+.node-type-badge,
+.child-type,
+.status-badge,
+.svc-tag {
+  background: #26384a;
+  border: 1px solid #405064;
+  border-radius: 4px;
+  padding: 3px 7px;
+  font-size: 11px;
+}
+.status-badge.online {
+  color: #64d98b;
+}
+.status-badge.warning {
+  color: #f0c74b;
+}
+.status-badge .net-svg-icon {
+  width: 12px;
+  height: 12px;
+}
+.status-badge.offline {
+  color: #f06b63;
+}
+.status-badge.dhcp {
+  color: #6cb8f2;
+}
+.ping-meta {
+  margin-top: 6px;
+}
+
+.badge-physical {
+  color: #b19cd9;
+}
+.badge-vm {
+  color: #3498db;
+}
+.badge-container {
+  color: #38c172;
+}
+.badge-network {
+  color: #e6b800;
+}
+.badge-storage {
+  color: #e67e22;
+}
+.badge-other {
+  color: #aaa;
+}
+
+.section-label {
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #ccc;
+}
+.services-list,
+.specs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.spec-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.spec-groups.spec-groups-compact {
+  gap: 5px;
+}
+.spec-group {
+  margin-top: 8px;
+}
+.spec-chip {
+  background: #223446;
+  padding: 4px 7px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.status-row {
+  margin-top: 24px;
+}
+.card-actions {
+  margin-top: 15px;
+  justify-content: flex-end;
+}
+
+/* ── Verschachtelte Kinder (VM/Container unter Hardware) ── */
+.children-section {
+  margin-top: 10px;
+  border-top: 1px solid #405064;
+  padding-top: 8px;
+}
+.children-toggle,
+.children-empty {
+  color: #ddd;
+}
+.children-toggle {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: none;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.children-chevron {
+  margin-right: 6px;
+}
+.children-count {
+  margin-left: auto;
+  color: #999;
+  font-size: 11px;
+}
+.children-list,
+.child-tree {
+  margin-left: 15px;
+}
+.child-nested {
+  margin-left: 15px;
+  padding-left: 10px;
+  border-left: 1px dashed #405064;
+}
+.child-row {
+  padding: 7px 0;
+  border-bottom: 1px solid #2a3b4c;
+}
+.child-row.status-offline {
+  border-left: 3px solid #a94442;
+  padding-left: 6px;
+}
+.child-row.status-warn {
+  border-left: 3px solid #b58b20;
+  padding-left: 6px;
+}
+.child-row.status-dhcp {
+  border-left: 3px solid #2477b3;
+  padding-left: 6px;
+}
+.child-main {
+  flex: 1;
+}
+.child-name {
+  color: white;
+  font-weight: bold;
+}
+
+/* ── Formulare (Node-Modal, Login, Passwort) ──────────── */
+.form-input,
+.form-select,
+.form-textarea,
+.filter-sel,
+.svc-status-sel {
+  width: 100%;
+  background: #101820;
+  color: white;
+  border: 1px solid #52667c;
+  border-radius: 4px;
+  padding: 8px;
+}
+.filter-sel,
+.svc-status-sel {
+  width: auto;
+}
+.form-group {
+  margin-bottom: 12px;
+  flex: 1;
+}
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-row,
+.form-row-4,
+.identity-row,
+.endpoint-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.protocol-field {
+  min-width: 90px;
+}
+.form-section {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.form-textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+.form-checks-highlight {
+  background: #172331;
+  border: 1px solid #405064;
+  border-radius: 4px;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+}
+.check-field {
+  display: flex;
+  align-items: flex-end;
+}
+.ip-mode-row {
+  margin-top: 8px;
+}
+.ip-mode-option {
+  padding: 6px 10px;
+  border: 1px solid #405064;
+  border-radius: 4px;
+}
+.ip-mode-option:has(input:checked) {
+  border-color: #3498db;
+}
+.attach-settings {
+  margin-top: 8px;
+}
+
+.services-input-area {
+  background: #101820;
+  border: 1px solid #405064;
+  border-radius: 4px;
+  padding: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* ── Modal ─────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: #000a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 200;
+}
+.modal {
+  width: min(700px, 100%);
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #172331;
+  border: 1px solid #52667c;
+  border-radius: 6px;
+}
+.modal.password-modal {
+  width: min(380px, 100%);
+}
+.modal.info-detail-modal {
+  width: min(600px, 100%);
+}
+/* Node_Modal.jsx wrappt modal-body + modal-footer in ein <form>-Element.
+   Damit die Flex-Scroll-Kette (siehe .modal-body unten) funktioniert,
+   muss auch dieses <form> selbst ein Flex-Container sein — sonst bricht
+   die Höhenberechnung und der Body lässt sich nicht mehr scrollen. */
+.modal form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+.modal-header,
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px;
+  border-bottom: 1px solid #405064;
+  flex-shrink: 0;
+}
+.modal-footer {
+  border-top: 1px solid #405064;
+  border-bottom: 0;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.modal-body {
+  padding: 15px;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  min-height: 0;
+}
+.modal-title {
+  font-weight: bold;
+}
+.modal-close {
+  background: none;
+  border: 0;
+  color: white;
+  font-size: 20px;
+}
+.device-info-icon {
+  font-size: 24px;
+}
+
+.emoji-picker,
+.ip-mode-options,
+.form-checks {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.emoji-opt {
+  padding: 7px;
+  background: #223446;
+  border: 1px solid #405064;
+  border-radius: 4px;
+  color: #eee;
+}
+.emoji-opt.selected {
+  border-color: #3498db;
+}
+
+/* IP-Vergabe als Segmented-Toggle statt Checkbox-Optik, damit klar ist:
+   eine von zwei Optionen wählen – kein unabhängiges Ankreuzen wie bei
+   der Direktlink-Checkbox darunter. */
+.ip-mode-options {
+  gap: 0;
+  border: 1px solid #405064;
+  border-radius: 20px;
+  overflow: hidden;
+  width: fit-content;
+}
+.ip-mode-option {
+  border: none;
+  border-radius: 0;
+}
+.ip-mode-option input[type='radio'] {
+  display: none;
+}
+.ip-mode-option:has(input:checked) {
+  background: #3498db;
+  border-color: transparent;
+}
+
+/* ── Login ─────────────────────────────────────────────── */
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-card {
+  width: 350px;
+  background: #172331;
+  padding: 25px;
+  border: 1px solid #405064;
+  border-radius: 6px;
+}
+.login-brand {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.login-title {
+  font-size: 22px;
+  margin: 10px 0 5px;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+.login-remember {
+  margin: 8px 0;
+}
+.login-submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+}
+.login-error,
+.password-message {
+  color: #ff7777;
+  margin: 8px 0;
+}
+
+/* ── Empty / Loading states ────────────────────────────── */
+.loading-state,
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #aaa;
+}
+.empty-state .big-icon {
+  font-size: 34px;
+  opacity: 0.5;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+.empty-state .big-icon .net-svg-icon {
+  width: 40px;
+  height: 40px;
+}
+.node-count {
+  color: #bbb;
+  font-size: 12px;
+}
+
+/* ── Toast ─────────────────────────────────────────────── */
+#toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.toast {
+  background: #25384b;
+  border: 1px solid #52667c;
+  border-radius: 4px;
+  padding: 10px 14px;
+  min-width: 200px;
+}
+.toast.success {
+  border-color: #38c172;
+}
+.toast.error {
+  border-color: #e74c3c;
+}
+.toast.info {
+  border-color: #3498db;
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #405064;
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 700px) {
+  header,
+  .header-stats,
+  .form-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .header-stats {
+    margin-left: 0;
+  }
+  main {
+    padding: 10px;
+  }
+}
