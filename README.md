@@ -70,9 +70,7 @@ Passwort: Bekannt
 7. ``Ordner öffnen`` anklicken und folgenden Pfad öffnen: ``/opt/webseite/Homelab-Dashboard/``
 
 
-## Webseite starten
-
-# Backend-Konfiguration anlegen
+# Webseite starten
  1. JWT_SECRET, SEED_ADMIN_USER und SEED_ADMIN_PASSWORD in Backend/.env eintragen
  2. cp Backend/.env.example Backend/.env
  3. docker compose up -d --build
