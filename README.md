@@ -73,7 +73,7 @@ Passwort: Bekannt
 ## Webseite starten
 
 # Backend-Konfiguration anlegen
- 1. JWT_SECRET, SEED_ADMIN_USER und SEED_ADMIN_PASSWORD in Backend/.env eintragen)
+ 1. JWT_SECRET, SEED_ADMIN_USER und SEED_ADMIN_PASSWORD in Backend/.env eintragen
  2. cp Backend/.env.example Backend/.env
  3. docker compose up -d --build
  4. docker compose exec backend npm run seed   # legt den Admin-User an (nur beim ersten Start nötig)
