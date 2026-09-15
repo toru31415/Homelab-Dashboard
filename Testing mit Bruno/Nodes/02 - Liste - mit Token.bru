@@ -1,0 +1,25 @@
+meta {
+  name: Liste - mit Token
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/nodes
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  test("Status ist 200", function() {
+    expect(res.status).to.equal(200);
+  });
+
+  test("Antwort ist ein Array", function() {
+    expect(res.body).to.be.an('array');
+  });
+}

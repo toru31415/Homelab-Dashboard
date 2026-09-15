@@ -1,0 +1,32 @@
+meta {
+  name: Anlegen - ungueltiger Typ
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{baseUrl}}/nodes
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Ungueltiger-Typ-Test",
+    "type": "raumschiff"
+  }
+}
+
+tests {
+  test("Status ist 400", function() {
+    expect(res.status).to.equal(400);
+  });
+
+  test("Fehlermeldung vorhanden (Enum-Validierung)", function() {
+    expect(res.body.error).to.be.a('string');
+  });
+}

@@ -1,0 +1,25 @@
+meta {
+  name: Loeschen - erneut (bereits weg)
+  type: http
+  seq: 10
+}
+
+delete {
+  url: {{baseUrl}}/nodes/{{nodeId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  test("Status ist 404 (bereits geloescht)", function() {
+    expect(res.status).to.equal(404);
+  });
+
+  test("Fehlermeldung stimmt", function() {
+    expect(res.body.error).to.equal('Node nicht gefunden.');
+  });
+}

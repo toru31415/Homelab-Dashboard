@@ -1,0 +1,36 @@
+meta {
+  name: Aktualisieren
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{baseUrl}}/nodes/{{nodeId}}
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Bruno-Test-Server-Updated",
+    "ip": "192.168.1.51"
+  }
+}
+
+tests {
+  test("Status ist 200", function() {
+    expect(res.status).to.equal(200);
+  });
+
+  test("Name wurde aktualisiert", function() {
+    expect(res.body.name).to.equal('Bruno-Test-Server-Updated');
+  });
+
+  test("IP wurde aktualisiert", function() {
+    expect(res.body.ip).to.equal('192.168.1.51');
+  });
+}

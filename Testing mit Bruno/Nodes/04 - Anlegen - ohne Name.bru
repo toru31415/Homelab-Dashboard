@@ -1,0 +1,32 @@
+meta {
+  name: Anlegen - ohne Name
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/nodes
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "ip": "10.0.0.5",
+    "type": "physical"
+  }
+}
+
+tests {
+  test("Status ist 400", function() {
+    expect(res.status).to.equal(400);
+  });
+
+  test("Fehlermeldung erwaehnt das Pflichtfeld name", function() {
+    expect(res.body.error).to.include('name');
+  });
+}

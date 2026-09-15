@@ -1,0 +1,36 @@
+meta {
+  name: Login - falsches Passwort
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/auth/login
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "username": "{{adminUser}}",
+    "password": "ganz-sicher-falsch"
+  }
+}
+
+tests {
+  test("Status ist 401", function() {
+    expect(res.status).to.equal(401);
+  });
+
+  test("Kein Token in der Antwort", function() {
+    expect(res.body.token).to.be.undefined;
+  });
+
+  test("Fehlermeldung vorhanden", function() {
+    expect(res.body.error).to.be.a('string');
+  });
+}

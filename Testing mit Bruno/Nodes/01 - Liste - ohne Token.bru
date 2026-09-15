@@ -1,0 +1,21 @@
+meta {
+  name: Liste - ohne Token
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/nodes
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status ist 401", function() {
+    expect(res.status).to.equal(401);
+  });
+
+  test("Fehlermeldung stimmt", function() {
+    expect(res.body.error).to.equal('Nicht angemeldet.');
+  });
+}

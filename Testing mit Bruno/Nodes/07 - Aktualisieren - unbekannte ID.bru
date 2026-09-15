@@ -1,0 +1,31 @@
+meta {
+  name: Aktualisieren - unbekannte ID
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{baseUrl}}/nodes/64f000000000000000000000
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Existiert nicht"
+  }
+}
+
+tests {
+  test("Status ist 404", function() {
+    expect(res.status).to.equal(404);
+  });
+
+  test("Fehlermeldung stimmt", function() {
+    expect(res.body.error).to.equal('Node nicht gefunden.');
+  });
+}

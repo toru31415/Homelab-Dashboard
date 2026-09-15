@@ -1,0 +1,42 @@
+meta {
+  name: Login - erfolgreich
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/auth/login
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "username": "{{adminUser}}",
+    "password": "{{adminPassword}}"
+  }
+}
+
+script:post-response {
+  if (res.status === 200 && res.body.token) {
+    bru.setVar("token", res.body.token);
+  }
+}
+
+tests {
+  test("Status ist 200", function() {
+    expect(res.status).to.equal(200);
+  });
+
+  test("Antwort enthaelt einen Token", function() {
+    expect(res.body.token).to.be.a('string');
+  });
+
+  test("Username kommt zurueck", function() {
+    expect(res.body.username).to.be.a('string');
+  });
+}

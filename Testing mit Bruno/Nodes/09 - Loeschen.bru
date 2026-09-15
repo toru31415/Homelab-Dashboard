@@ -1,0 +1,25 @@
+meta {
+  name: Loeschen
+  type: http
+  seq: 9
+}
+
+delete {
+  url: {{baseUrl}}/nodes/{{nodeId}}
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  test("Status ist 200", function() {
+    expect(res.status).to.equal(200);
+  });
+
+  test("Antwort bestaetigt Loeschung", function() {
+    expect(res.body.ok).to.equal(true);
+  });
+}

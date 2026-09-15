@@ -1,0 +1,45 @@
+meta {
+  name: Anlegen - gueltig
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/nodes
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "Bruno-Test-Server",
+    "ip": "192.168.1.50",
+    "type": "physical"
+  }
+}
+
+script:post-response {
+  if (res.status === 201 && res.body._id) {
+    bru.setVar("nodeId", res.body._id);
+  }
+}
+
+tests {
+  test("Status ist 201", function() {
+    expect(res.status).to.equal(201);
+  });
+
+  test("Server vergibt eine ID", function() {
+    expect(res.body._id).to.be.a('string');
+  });
+
+  test("Gesendete Werte kommen zurueck", function() {
+    expect(res.body.name).to.equal('Bruno-Test-Server');
+    expect(res.body.ip).to.equal('192.168.1.50');
+    expect(res.body.type).to.equal('physical');
+  });
+}

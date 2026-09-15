@@ -1,0 +1,29 @@
+meta {
+  name: Einzelnen Ping ausloesen
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{baseUrl}}/nodes/{{nodeId}}/ping
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  test("Status ist 200", function() {
+    expect(res.status).to.equal(200);
+  });
+
+  test("Antwort hat ein gueltiges status-Feld", function() {
+    expect(res.body.status).to.be.oneOf(['online', 'offline']);
+  });
+
+  test("lastCheck wurde gesetzt", function() {
+    expect(res.body.lastCheck).to.not.be.null;
+  });
+}

@@ -3,9 +3,6 @@ const Node = require('../Models/Node');
 const {pingHost} = require('../Utils/Ping');
 const router = express.Router();
 
-// Hilfsfunktion: fängt insbesondere ungültige ObjectId-Strings (z.B. "undefined")
-// ab und wandelt sie in ein sauberes 404 statt in einen unbehandelten Fehler um,
-// der den ganzen Server-Prozess crashen kann.
 function handleNodeError(res, error) {
     if (error.name === 'CastError') {
         return res.status(404).json({error: 'Node nicht gefunden.'});

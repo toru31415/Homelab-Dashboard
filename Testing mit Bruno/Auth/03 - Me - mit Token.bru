@@ -1,0 +1,25 @@
+meta {
+  name: Me - mit Token
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/auth/me
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+tests {
+  test("Status ist 200", function() {
+    expect(res.status).to.equal(200);
+  });
+
+  test("Username kommt zurueck", function() {
+    expect(res.body.username).to.be.a('string');
+  });
+}
