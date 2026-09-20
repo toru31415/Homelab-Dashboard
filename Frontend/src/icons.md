@@ -1,5 +1,5 @@
 # icons.js
-_Homelab-Dashboard/Frontend/icons.js_
+_Homelab-Dashboard/Frontend/src/icons.js_
 
 ## Zusammenfassung
 Die Datei ``icons.js`` ist ein Array,  welches die icon definition für das Homelab-Dashboard beinhaltet. Es zentralisiert UI Objekte an einem Ort, damit man diese via ``id`` ansteuern und verwenden kann.
