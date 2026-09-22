@@ -1,6 +1,6 @@
 FROM node:20-alpine
 
-# Ist für den Ping befehl (iputils) dran
+# Ist für den Ping befehl (iputils).
 RUN apk add --no-cache iputils
 WORKDIR /app
 COPY package*.json ./

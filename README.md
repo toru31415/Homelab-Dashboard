@@ -2,10 +2,10 @@
 _mit dem MERN-Stack_
 
 ## Ziel
-Mit Hilfe vom MERN Stack erstellen wir ein Homelab Dashboard, um per Ping Komponenten zu überwachen und visualisieren.
+Mit Hilfe vom MERN Stack haben wir ein Homelab Dashboard erstellt, um per Ping, Komponenten zu überwachen und visualisieren.
 
 ## Ordner und Dateien
-Nachfolgend wird die Ordnerstruktur und Dateien darin beschrieben.
+Nachfolgend wird grob die Ordnerstruktur und die Dateien darin beschrieben.
 
 ```md
 mern/
@@ -50,33 +50,17 @@ nginx.conf / Dockerfile:    ← Für den Produktivbetrieb: baut die React-App un
 | chore: | Konfiguration/Aufräumarbeiten
 | docs: | Dokumentation
 
-## Datenmodel
-
-
 ## API
 [API.md](API.md)
 - - -
-
-## Verbindung aufbauen
-Webserver-IP-Adresse: 192.168.2.18
-Username: root
-Passwort: Bekannt
-
-1. Im VS-Code ``Remote-SSH`` extension installiern.
-2. Im VS-Code ``Ctrl`` + ``Shift`` + ``P`` ausführen und ``Remote-SSH: Add New SSH Host...`` eingeben.
-3. ``root@192.168.2.18`` eingeben und SSH-File wählen.
-5. Im VS-Code ``Ctrl`` + ``Shift`` + ``P`` ausführen und ``Remote-SSH: Connect current Windows to Host`` eingeben.
-6. ``192.168.2.18`` wählen und das Passwort eingeben.
-7. ``Ordner öffnen`` anklicken und folgenden Pfad öffnen: ``/opt/webseite/Homelab-Dashboard/``
-
 
 # Webseite starten
  1. JWT_SECRET, SEED_ADMIN_USER und SEED_ADMIN_PASSWORD in Backend/.env eintragen
  2. cp Backend/.env.example Backend/.env
  3. docker compose up -d --build
- 4. docker compose exec backend npm run seed   # legt den Admin-User an (nur beim ersten Start nötig)
+ 4. docker compose exec backend npm run seed #legt den Admin-User an (nur beim ersten Start nötig)
 
-Danach ist das Dashboard unter `http://localhost` bzw. `http://192.168.2.18` erreichbar.
+Danach ist das Dashboard unter `http://localhost` erreichbar.
 
 ## Stoppen / Neustarten
 docker compose down            # stoppen (Daten bleiben erhalten)

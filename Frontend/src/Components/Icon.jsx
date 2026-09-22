@@ -8,8 +8,6 @@ export function getIcon(value) {
   return ICONS.find((i) => i.id === normalizeIcon(value)) || ICONS[0];
 }
 
-// Rendert das SVG-Icon. Die SVG-Strings stammen 1:1 aus dem Original-Dashboard
-// (statischer, von uns selbst gepflegter Code – kein User-Input).
 export default function Icon({ id, className = '' }) {
   const icon = getIcon(id);
   return (

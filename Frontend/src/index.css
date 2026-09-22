@@ -266,8 +266,7 @@ main {
   color: #aaa;
   font-size: 12px;
 }
-/* Links in der IP-Zeile sollen wie normaler grauer Text aussehen statt
-   in der Standard-Linkfarbe des Browsers — sonst gewinnt a:link gegen .node-ip. */
+
 .node-ip a,
 .child-endpoint a {
   color: inherit;
@@ -533,10 +532,6 @@ main {
 .modal.info-detail-modal {
   width: min(600px, 100%);
 }
-/* Node_Modal.jsx wrappt modal-body + modal-footer in ein <form>-Element.
-   Damit die Flex-Scroll-Kette (siehe .modal-body unten) funktioniert,
-   muss auch dieses <form> selbst ein Flex-Container sein — sonst bricht
-   die Höhenberechnung und der Body lässt sich nicht mehr scrollen. */
 .modal form {
   display: flex;
   flex-direction: column;
@@ -596,9 +591,6 @@ main {
   border-color: #3498db;
 }
 
-/* IP-Vergabe als Segmented-Toggle statt Checkbox-Optik, damit klar ist:
-   eine von zwei Optionen wählen – kein unabhängiges Ankreuzen wie bei
-   der Direktlink-Checkbox darunter. */
 .ip-mode-options {
   gap: 0;
   border: 1px solid #405064;

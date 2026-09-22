@@ -9,7 +9,6 @@ import NodeCard from '../Components/Node_Card.jsx';
 import NodeModal from '../Components/Node_Modal.jsx';
 import PasswordModal from '../Components/Password_Modal.jsx';
 import InfoModal from '../Components/Info_Modal.jsx';
-import Icon from '../Components/Icon.jsx';
 import { isHardware, effectiveStatus } from '../nodeHelper.js';
 
 export default function Dashboard() {
@@ -46,7 +45,7 @@ export default function Dashboard() {
     loadNodes();
   }, [loadNodes]);
 
-  // ── Filterlogik 1:1 aus dem Original ──────────────────────────
+  // Filterlogik
   const base = useMemo(() => {
     if (tab === 'hardware') return nodes.filter(isHardware);
     if (tab === 'vm') return nodes.filter((n) => n.type === 'vm');
@@ -72,7 +71,7 @@ export default function Dashboard() {
     return `${base.length} ${label}${label === 'Hardware' || base.length === 1 ? '' : 's'} · ${nodes.length} total`;
   }, [list, base, nodes, tab]);
 
-  // ── CRUD-Aktionen ──────────────────────────────────────────────
+  // CRUD-Aktionen
   async function handleSave(form) {
     try {
       if (editingNode) {
